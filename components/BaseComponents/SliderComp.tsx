@@ -20,6 +20,7 @@ const SliderComp = ({minValue = 0, maxValue, currentValue, onSliderCompleteCallb
       upperLimit = {maxValue}
       step={1}
       onSlidingComplete={(newValue: number) => {onSliderCompleteCallback(newValue)}}
+      
     >
 
     </Slider>
