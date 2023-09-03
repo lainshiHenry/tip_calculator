@@ -1,37 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Slider from '@react-native-community/slider';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 interface SliderProps{
     minValue: number,
     maxValue: number,
     currentValue: number,
-    onSliderCompleteCallback: Function
+    onSliderCompleteCallback: Function,
 };
 
 const SliderComp = ({minValue = 0, maxValue, currentValue, onSliderCompleteCallback}: SliderProps) => {
-  return (
-    <Slider
-      style={sliderStyles.slider}
-      value={currentValue}
-      maximumValue = {maxValue}
-      minimumValue = {minValue}
-      lowerLimit = {minValue}
-      upperLimit = {maxValue}
-      step={1}
-      onSlidingComplete={(newValue: number) => {onSliderCompleteCallback(newValue)}}
-      
-    >
+  const [currentSelectedValue, setCurrentSelectedValue] = useState(currentValue);
 
-    </Slider>
+  return (
+    <View style={styles.container}>
+      <Slider
+        style={styles.slider}
+        value={currentValue}
+        maximumValue = {maxValue}
+        minimumValue = {minValue}
+        lowerLimit = {minValue}
+        upperLimit = {maxValue}
+        step={1}
+        // onSlidingComplete={(newValue: number) => {onSliderCompleteCallback(newValue)}} 
+        onValueChange={(newValue: number) => {
+          setCurrentSelectedValue(newValue);
+          onSliderCompleteCallback(newValue);
+        }}
+      >
+      </Slider>
+      <View style={styles.textContainer}>
+        <Text>{minValue} %</Text>
+        <Text>{currentSelectedValue + '%'}</Text>
+        <Text>{maxValue + '%'}</Text>
+      </View>
+    </View>
+    
   )
 }
 
 export default SliderComp
 
-const sliderStyles = StyleSheet.create({
+const styles = StyleSheet.create({
+  container: {
+    // flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: '#000'
+  },
   slider: {
-    width: '70%'
+    width: '100%'
+  },
+  textContainer: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 
 }); 

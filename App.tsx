@@ -1,8 +1,11 @@
 import React, {useEffect, useRef, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
 import SliderComp from './components/BaseComponents/SliderComp';
 import TextInputComp from './components/BaseComponents/TextInputComp';
+import LineComp from './components/BaseComponents/LineComp';
+
+const windowWidth = Dimensions.get('window').width;
 
 export default function App() {
   
@@ -16,7 +19,6 @@ export default function App() {
       setTotal(0);
     } else {
       let temp = subTotal + tipsValue;
-      console.log(temp);
       setTotal(temp);
     }
   }
@@ -48,9 +50,6 @@ export default function App() {
           isNumField={true}
           prependString='$'
           onUpdateCallbackFn={(newValue) => {
-            console.log(`newValue: ${newValue}, typeof: ${typeof newValue}`);
-            // subTotal.current = newValue;
-            // console.log(newValue);
             setSubTotal(newValue);
           }}
         />
@@ -71,7 +70,7 @@ export default function App() {
           prependString='$'
         />
       </View>
-
+      <LineComp />
       <View style={styles.bottomSection}>
         {/* Text input for tips */}
         <Text>Tips %: </Text>
@@ -81,11 +80,6 @@ export default function App() {
           maxValue={50}
           currentValue={15}
           onSliderCompleteCallback={setTipsPerc}
-        />  
-        <TextInputComp 
-          value={tipsPerc}
-          isEditable={false}
-          appendString='%'
         />
       </View>
 
@@ -98,14 +92,17 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    width: windowWidth,
     flex: 1,
     backgroundColor: '#fefefe',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  topSection: {},
+  topSection: {
+    width: '70%',
+  },
   bottomSection: {
-    width: '100%',
+    width: '70%',
     alignItems: 'center'
   }
 });

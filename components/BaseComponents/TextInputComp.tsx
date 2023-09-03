@@ -55,7 +55,7 @@ const TextInputComp = ({
 const styles = StyleSheet.create({
   textInput: {
     height: 40, 
-    width: 150, 
+    width: '100%', 
     borderWidth: 0, 
     borderBottomWidth: 1,
     borderBottomColor: 'black',
