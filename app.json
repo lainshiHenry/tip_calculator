@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Tip Calculator",
-    "slug": "tipCalculator",
+    "slug": "tipcalculator",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "ca.henryle.tipcalculator"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f3757db6-94b5-4a34-97c5-cb013adb8b02"
+      }
+    },
+    "owner": "heishenryle"
   }
 }

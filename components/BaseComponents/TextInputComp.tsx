@@ -27,12 +27,8 @@ const TextInputComp = ({
       editable={isEditable}
       value={value === 0 || value === undefined ? '' : `${value.toFixed(2)}${appendString}`}
       onKeyPress={(e) => {
-        console.log(e.nativeEvent.key);
-        console.log(e.nativeEvent.key === 'Backspace');
 
         if( e.nativeEvent.key === 'Backspace' ){
-          console.log(`length of string: ${value.toString().length}`);
-          // if(value.toString().length - 1 === 0){
           if(value === 0 || value.toString().length === 1 ){
             onUpdateCallbackFn(0);
           } else {
@@ -60,7 +56,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: 'black',
     borderStyle: 'solid', 
-    textAlign: 'center'
+    textAlign: 'center',
+    marginBottom: 20
   }
 });
 
