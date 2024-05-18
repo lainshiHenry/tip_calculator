@@ -22,7 +22,6 @@ const SliderComp = ({minValue = 0, maxValue, currentValue, onSliderCompleteCallb
         lowerLimit = {minValue}
         upperLimit = {maxValue}
         step={1}
-        // onSlidingComplete={(newValue: number) => {onSliderCompleteCallback(newValue)}} 
         onValueChange={(newValue: number) => {
           setCurrentSelectedValue(newValue);
           onSliderCompleteCallback(newValue);
@@ -43,11 +42,9 @@ export default SliderComp
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#000'
   },
   slider: {
     width: '100%'
